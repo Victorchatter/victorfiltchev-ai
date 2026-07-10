@@ -1,0 +1,21 @@
+---
+title: "The Boring Part of AI Is the Part That Matters"
+date: "2026-07-08"
+excerpt: "Everyone's excited about the next model release. Almost nobody talks about the unglamorous infrastructure that determines whether AI actually works in production."
+---
+
+Every few weeks there's a new model with a new benchmark chart. That's the fun part to talk about. It's also not where most of the actual value gets won or lost.
+
+## The unglamorous stuff wins
+
+The projects that hold up in production aren't the ones using the newest model — they're the ones with:
+
+- **Boring, explicit context management.** What does the agent actually see at each step? If you can't answer that precisely, you don't have a system, you have a slot machine.
+- **Real verification, not vibes.** "It looked right when I tried it" is not a test. Does it have a check that fails when the logic breaks?
+- **Narrow scope per task.** The failure mode I see most often isn't the model being dumb — it's someone handing it a task three times too broad for what it can reliably verify itself.
+
+## Why this matters more as models get better
+
+The gap between "impressive demo" and "thing I'd trust running unattended" is mostly infrastructure, not intelligence. As models keep improving, that gap won't close on its own — it closes when the people building on top of them do the boring work of scoping tasks tightly, giving agents the right context, and building in verification instead of trusting output.
+
+That's the part that doesn't make it into the launch tweet. It's also the part that actually determines whether what you ship works.
