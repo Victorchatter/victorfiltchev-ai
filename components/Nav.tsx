@@ -7,22 +7,14 @@ export default function Nav() {
         <Link href="/" className="text-foreground tracking-tight">
           victorfiltchev<span className="text-accent">_ai</span>
         </Link>
-        <nav className="flex items-center gap-6 text-muted">
-          <Link href="/journal" className="hover:text-accent transition-colors">
-            journal
-          </Link>
-          <Link href="/about" className="hover:text-accent transition-colors">
-            about
-          </Link>
-          <a
-            href="https://github.com/Victorchatter"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            github
-          </a>
-        </nav>
+        <a
+          href="https://github.com/Victorchatter"
+          target="_blank"
+          rel="noreferrer"
+          className="text-muted hover:text-accent transition-colors"
+        >
+          github
+        </a>
       </div>
     </header>
   );

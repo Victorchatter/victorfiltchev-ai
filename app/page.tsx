@@ -1,77 +1,56 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
 
-const links = [
-  {
-    label: "GitHub — engramkit",
-    href: "https://github.com/Victorchatter/engramkit",
-    desc: "Persistent memory system for AI agents.",
-  },
-  {
-    label: "Korrin",
-    href: "https://korrin.eu",
-    desc: "Autonomous pipeline company for cyber vendors.",
-  },
-  {
-    label: "Orvexis IV",
-    href: "https://orvexisiv.com",
-    desc: "Client site builds and web studio.",
-  },
+const buttons = [
+  { label: "Journal", desc: "Writing on agentic AI workflows", href: "/journal", internal: true },
+  { label: "About", desc: "Who I am, what I build", href: "/about", internal: true },
+  { label: "GitHub — engramkit", desc: "Persistent memory system for AI agents", href: "https://github.com/Victorchatter/engramkit" },
+  { label: "Korrin", desc: "Autonomous pipeline company for cyber vendors", href: "https://korrin.eu" },
+  { label: "Orvexis IV", desc: "Client site builds and web studio", href: "https://orvexisiv.com" },
 ];
 
 export default function Home() {
-  const posts = getAllPosts().slice(0, 3);
-
   return (
-    <div className="max-w-4xl mx-auto px-6">
-      <section className="py-24 sm:py-32">
-        <p className="font-mono text-accent text-sm mb-4">// victorfiltchev_ai</p>
-        <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight max-w-2xl">
-          Solo founder &amp; builder mastering agentic AI workflows.
-        </h1>
-        <p className="mt-5 text-muted max-w-xl leading-relaxed">
-          I design and ship software with fleets of AI agents — SaaS products, client sites,
-          and trading systems. This is where I write about what actually works.
-        </p>
-      </section>
+    <div className="max-w-md mx-auto px-6 py-16 sm:py-24 flex flex-col items-center text-center">
+      <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center font-mono text-2xl text-accent">
+        VF
+      </div>
 
-      <section className="pb-20">
-        <h2 className="font-mono text-sm text-muted mb-5">projects</h2>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {links.map((l) => (
+      <h1 className="mt-5 text-xl font-semibold tracking-tight">Victor Filtchev</h1>
+      <p className="font-mono text-accent text-xs mt-1">victorfiltchev_ai</p>
+      <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+        Solo founder &amp; builder mastering agentic AI workflows. Shipping software with
+        fleets of AI agents.
+      </p>
+
+      <div className="mt-10 w-full flex flex-col gap-3">
+        {buttons.map((b) =>
+          b.internal ? (
+            <Link
+              key={b.href}
+              href={b.href}
+              className="group w-full border border-border rounded-xl px-5 py-4 hover:border-accent/60 transition-colors"
+            >
+              <p className="font-mono text-sm group-hover:text-accent transition-colors">
+                {b.label}
+              </p>
+              <p className="text-xs text-muted mt-1">{b.desc}</p>
+            </Link>
+          ) : (
             <a
-              key={l.href}
-              href={l.href}
+              key={b.href}
+              href={b.href}
               target="_blank"
               rel="noreferrer"
-              className="group border border-border rounded-lg p-5 hover:border-accent/60 transition-colors"
+              className="group w-full border border-border rounded-xl px-5 py-4 hover:border-accent/60 transition-colors"
             >
-              <p className="font-mono text-sm text-foreground group-hover:text-accent transition-colors">
-                {l.label}
+              <p className="font-mono text-sm group-hover:text-accent transition-colors">
+                {b.label}
               </p>
-              <p className="text-xs text-muted mt-2 leading-relaxed">{l.desc}</p>
+              <p className="text-xs text-muted mt-1">{b.desc}</p>
             </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="pb-32">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="font-mono text-sm text-muted">latest from the journal</h2>
-          <Link href="/journal" className="font-mono text-xs text-accent hover:underline">
-            view all →
-          </Link>
-        </div>
-        <div className="flex flex-col divide-y divide-border">
-          {posts.map((p) => (
-            <Link key={p.slug} href={`/journal/${p.slug}`} className="py-5 group block">
-              <p className="font-mono text-xs text-muted mb-1">{p.date}</p>
-              <p className="text-lg group-hover:text-accent transition-colors">{p.title}</p>
-              <p className="text-sm text-muted mt-1 leading-relaxed">{p.excerpt}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+          )
+        )}
+      </div>
     </div>
   );
 }
